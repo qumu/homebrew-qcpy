@@ -14,8 +14,13 @@ class Qc < Formula
   end
 
   def install
-    binary_name = OS.mac? ? "qc-darwin-arm64" : "qc-linux-amd64"
-    bin.install binary_name => "qc"
+    expected_name = OS.mac? ? "qc-darwin-arm64" : "qc-linux-amd64"
+    source = [buildpath/expected_name, buildpath/"download"].find(&:exist?)
+    source ||= buildpath.children.find(&:file?)
+    odie "Unable to locate downloaded qc binary in buildpath" unless source
+
+    chmod 0755, source
+    bin.install source => "qc"
   end
 
   test do
