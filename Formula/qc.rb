@@ -1,7 +1,7 @@
 class Qc < Formula
   desc "CLI for Qumu Cloud REST API operations"
   homepage "https://github.com/qumu/qcpy"
-  version "branch-main"
+  version "60400302a43da9056e5ba6378caee82e04143137"
 
   on_macos do
     url "https://europe-generic.pkg.dev/qumu-dev/public/qcpy/60400302a43da9056e5ba6378caee82e04143137/qc-darwin-arm64"
