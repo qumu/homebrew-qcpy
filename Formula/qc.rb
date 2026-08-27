@@ -4,12 +4,12 @@ class Qc < Formula
   version "60400302a43da9056e5ba6378caee82e04143137"
 
   on_macos do
-    url "https://europe-generic.pkg.dev/qumu-dev/public/qcpy/60400302a43da9056e5ba6378caee82e04143137/qc-darwin-arm64"
+    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:60400302a43da9056e5ba6378caee82e04143137:qc-darwin-arm64:download?alt=media"
     sha256 "507682142f02c071159f22877d770551975d9c4746717c42837bac166c857cae"
   end
 
   on_linux do
-    url "https://europe-generic.pkg.dev/qumu-dev/public/qcpy/60400302a43da9056e5ba6378caee82e04143137/qc-linux-amd64"
+    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:60400302a43da9056e5ba6378caee82e04143137:qc-linux-amd64:download?alt=media"
     sha256 "aeadefc05000b47bd63c0c39f4fac8613f12a6f1c86258c47a19f4c424bdf662"
   end
 
@@ -19,8 +19,13 @@ class Qc < Formula
     source ||= buildpath.children.find(&:file?)
     odie "Unable to locate downloaded qc binary in buildpath" unless source
 
+    if source.read(256).downcase.include?("<html")
+      odie "Downloaded content is HTML, not a qc binary. Verify Artifact Registry URL is publicly accessible."
+    end
+
     chmod 0755, source
     bin.install source => "qc"
+    chmod 0755, bin/"qc"
   end
 
   test do
