@@ -5,7 +5,7 @@ class Qc < Formula
 
   on_macos do
     url "https://europe-generic.pkg.dev/qumu-dev/public/qcpy/60400302a43da9056e5ba6378caee82e04143137/qc-darwin-arm64"
-    sha256 "b37f75897229cb3f52cac6a1cf4e645854fff55769b5acf3c393115982eb8461"
+    sha256 "507682142f02c071159f22877d770551975d9c4746717c42837bac166c857cae"
   end
 
   on_linux do
