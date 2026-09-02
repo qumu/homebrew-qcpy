@@ -1,11 +1,11 @@
 class Qc < Formula
   desc "CLI for Qumu Cloud REST API operations"
   homepage "https://github.com/qumu/qcpy"
-  version "3979eeb2f9b404c9d9c4dd50d39b1d599d22e057"
+  version "0920a1b902cbab4a09fe41e2c06e7963e26a62ca"
 
   on_macos do
-    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:3979eeb2f9b404c9d9c4dd50d39b1d599d22e057:qc-darwin-arm64:download?alt=media"
-    sha256 "30d20a7086ee7c4eefe4a4c2b478f45abde86438d3fec9c9e48733b8a5ab086d"
+    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:0920a1b902cbab4a09fe41e2c06e7963e26a62ca:qc-darwin-arm64.tar.gz:download?alt=media"
+    sha256 "c65b5efe7a21e3a13f2975c933ca539ad260abada6637819d1059c0d13da1525"
   end
 
   on_linux do
@@ -23,9 +23,17 @@ class Qc < Formula
       odie "Downloaded content is HTML, not a qc binary. Verify Artifact Registry URL is publicly accessible."
     end
 
-    chmod 0755, source
-    bin.install source => "qc"
-    chmod 0755, bin/"qc"
+    if OS.mac?
+      mkdir libexec/expected_name do
+        system "tar", "-xzf", source, "--strip-components=1", "-C", "."
+      end
+      chmod 0755, libexec/expected_name/expected_name
+      bin.install_symlink libexec/expected_name/expected_name => "qc"
+    else
+      chmod 0755, source
+      bin.install source => "qc"
+      chmod 0755, bin/"qc"
+    end
   end
 
   test do
