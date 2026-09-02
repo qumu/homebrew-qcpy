@@ -9,8 +9,8 @@ class Qc < Formula
   end
 
   on_linux do
-    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:16ac100a6a5b09829f539cbdb68006a594b13f96:qc-linux-amd64:download?alt=media"
-    sha256 "9d4e9d40b6a656309c9e904133a8ff62a053caec3d356ea78e589dfd1b8fe248"
+    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:c2fd9f40be3437bfa1361eb255cd8a169968b981:qc-linux-amd64:download?alt=media"
+    sha256 "50233219b7fa0f5fe77fd752862421feaafa349d8c3f13cc3f17fa6f9602fbf6"
   end
 
   def install
