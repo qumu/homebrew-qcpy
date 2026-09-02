@@ -1,11 +1,11 @@
 class Qc < Formula
   desc "CLI for Qumu Cloud REST API operations"
   homepage "https://github.com/qumu/qcpy"
-  version "7b938d3ca99bd4fda4197e424c2870bcfffd4b43"
+  version "ef1a4bce53bd0c642e687c086b4f52e1650c1cf6"
 
   on_macos do
-    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:7b938d3ca99bd4fda4197e424c2870bcfffd4b43:qc-darwin-arm64.tar.gz:download?alt=media"
-    sha256 "dd0a84a8141b3f2dae8c2a5abb2222dd5abf2070b59686f888245aafb55bfaee"
+    url "https://artifactregistry.googleapis.com/download/v1/projects/qumu-dev/locations/europe/repositories/public/files/qcpy:ef1a4bce53bd0c642e687c086b4f52e1650c1cf6:qc-darwin-arm64.tar.gz:download?alt=media"
+    sha256 "03c2f4499a78262811ecd10f355f3a2908944127a50ddafd6746b972b4eda2fb"
   end
 
   on_linux do
